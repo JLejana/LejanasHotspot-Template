@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>     
+        <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="expires" content="-1">
+
+        <title>Lejana's Hotspot | LOGOUT</title>
+
+        
+        <link rel="icon" type="image/png" href="images/icons/CircularLogo.ico"/>
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/logout-status.css">	
+
+        <script>
+            function openLogin() {
+            if (window.name != 'hotspot_logout') return true;
+            open('$(link-login)', '_blank', '');
+            window.close();
+            return false;
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url('images/1170650.jpg');">
+                <div class="wrap-login100">
+                    <img class="login100-form-logo" src="images/logo-LejanaHotspot.png" alt="Lejana's Hotspot LOGO">
+                    <h1 class="hello-user">Disconnected</h1>
+                    <h1 class="hello-user-msg">You Just Logout, Click "LOGIN BACK" to connect</h1>
+                    <form id="status-form" action="$(link-login)" name="login" onSubmit="return openLogin()">
+                        <div class="center-table">
+                            <table class="styled-table">
+                                <tbody>
+                                    <tr>
+                                        <td class="tr-td-left">Username</td>
+                                        <td class="tr-td-right">$(username)</td>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                        <td class="tr-td-left">IP Address</td>
+                                        <td class="tr-td-right">$(ip)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tr-td-left">MAC Address</td>
+                                        <td class="tr-td-right"> $(mac)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tr-td-left">Data</td>
+                                        <td class="tr-td-right"> $(bytes-in-nice) / $(bytes-out-nice)</td>
+                                    </tr>
+                                    <!--$(if session-time-left)-->
+                                        <tr>
+                                            <td class="tr-td-left">Uptime</td>
+                                            <td class="tr-td-right">$(uptime)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tr-td-left"> Time Left</td>
+                                            <td class="tr-td-right">$(session-time-left)</td>
+                                        </tr>
+                                    <!-- $(else)-->
+                                        <tr>
+                                            <td class="tr-td-left">Uptime</td>
+                                            <td class="tr-td-right">$(uptime)</td>
+                                        </tr>
+                                    <!-- $(endif)-->
+    
+    
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                    
+                    <div class="container-login100-form-btn">         
+                        <button class="login100-form-btn" type="submit" form="status-form">
+                            LOGIN BACK
+                        </button>
+                    </div>
+
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p>Sorry, This feature is not available on this device</p>
+                        </div>
+                    </div>
+                   
+
+                </div>
+            </div>
+        </div>
+
+        <script src="js/modal-status-extend.js"></script>
+
+        <script src="js/telegram-info.js"></script>
+        <script id="intergram" type="text/javascript" src="https://www.intergram.xyz/js/widget.js"></script>
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/select2/select2.min.js"></script>
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+    </body>
+</html>

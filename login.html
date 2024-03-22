@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lejana's Hotspot | Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/CircularLogo.ico" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/iconic/css/material-design-iconic-font.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/daterangepicker/daterangepicker.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/modal-loading.css" />
+    <link rel="stylesheet" type="text/css" href="css/table-design.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/feature-VIP/VIPLogin.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/feature-VIP/VIPDashboard.css"
+    />
+    <script src="jquery-2.1.4.js"></script>
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    <div class="loader-wrapper">
+      <div class="lds-grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    $(if chap-id)
+    <form
+      name="sendin"
+      action="$(link-login-only)"
+      method="post"
+      style="display: none"
+    >
+      <input type="hidden" name="username" />
+      <input type="hidden" name="password" />
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+      function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5(
+          "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
+        );
+        document.sendin.submit();
+        return false;
+      }
+    </script>
+    $(endif)
+
+    <div class="limiter">
+      <div
+        class="container-login100"
+        style="background-image: url('images/1170650.jpg')"
+      >
+        <div class="wrap-login100">
+          <form
+            id="login-form-submit"
+            class="login100-form validate-form"
+            name="login"
+            action="$(link-login-only)"
+            method="post"
+            $(if
+            chap-id)
+            onSubmit="return doLogin()"
+            $(endif)
+          >
+            <img
+              class="login100-form-logo"
+              src="images/logo-LejanaHotspot.png"
+              alt="Lejana's Hotspot LOGO"
+            />
+            <span class="login100-form-title p-t-27 p-b-18">
+              Please Login to continue
+            </span>
+
+            <!--<span class="login100-form-announce p-b-15 p-t-27">
+						internet connectivity was restored on (July 29, 2021 10:15pm)
+					</span>-->
+
+            $(if error)
+            <div id="geterror" class="login100-form-error p-b-25">$(error)</div>
+            $(endif)
+
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />-0
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Enter username"
+            >
+              <input
+                id="voucheruser"
+                class="input100"
+                name="username"
+                type="text"
+                value="$(username)"
+                placeholder="Enter Your Voucher Here!"
+              />
+              <span class="focus-input100" data-placeholder="&#xf207;"></span>
+            </div>
+            <input
+              id="password"
+              class="input100"
+              name="password"
+              type="hidden"
+            />
+          </form>
+
+          <div class="container-login100-form-btn">
+            <button
+              id="btn-login"
+              class="login100-form-btn"
+              type="submit"
+              form="login-form-submit"
+            >
+              LOGIN
+            </button>
+          </div>
+
+          <div class="btn-newfeature">
+            <div class="container-login100-form-btn-new">
+              <button
+                id="loadsavevoucher"
+                class="login100-form-btn-new"
+                data-toggle="modal"
+                data-target="#modalsavevoucher"
+              >
+                MY SAVED VOUCHERS
+              </button>
+            </div>
+            <div
+              class="container-login100-form-btn-new"
+              data-toggle="modal"
+              data-target="#modalwheretobuy"
+            >
+              <button class="login100-form-btn-new">WHERE TO BUY?</button>
+            </div>
+            <div class="container-login100-form-btn-new">
+              <button
+                class="login100-form-btn-new"
+                data-toggle="modal"
+                data-target="#modalvip"
+                onclick="generateDOMOnModalVIP()"
+              >
+                VIP
+              </button>
+            </div>
+          </div>
+
+          <!-- Modal For Save Voucher-->
+          <div
+            class="modal fade"
+            id="modalsavevoucher"
+            tabindex="-1"
+            role="dialog"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5
+                    class="modal-title"
+                    style="color: white; font-weight: bold"
+                    id="exampleModalLabel"
+                  >
+                    MY SAVE VOUCHER
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+                  <div id="showError"></div>
+                  <div class="center-modalloader">
+                    <div id="modal-loader" class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </div>
+                  </div>
+                  <div class="center-table">
+                    <table id="tablelist" class="styled-table">
+                      <thead>
+                        <th>USERNAME</th>
+                        <th>USE</th>
+                      </thead>
+                      <tbody id="tbody1"></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button
+                    id="modal-button-event"
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal For Where To Buy-->
+          <div
+            class="modal fade"
+            id="modalwheretobuy"
+            tabindex="-1"
+            role="dialog"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Saan Makakabili?
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="modal-text-left">1. BLK 10 LOT 87 (MAIN)</div>
+                  <div class="modal-image-full">
+                    <img
+                      src="images/1170650.jpg"
+                      alt="Where To Buy?"
+                      width="100%"
+                      ;
+                    />
+                  </div>
+                  <div class="modal-text-left">2. BLK 10 LOT 92</div>
+                  <div class="modal-image-full">
+                    <img
+                      src="images/1170650.jpg"
+                      alt="Where To Buy?"
+                      width="100%"
+                      ;
+                    />
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal For Where To Buy-->
+          <div class="modal fade" id="modalvip" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5
+                    class="modal-title"
+                    style="color: white; font-weight: bold"
+                    id="exampleModalLabel"
+                  >
+                    SIGN IN
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="VIPLogin"></div>
+                  <div id="VIPDashboard"></div>
+                </div>
+                <div
+                  id="VIPLogin-Button-Container-id"
+                  class="VIPLogin-Button-Container"
+                  style="justify-content: flex-end"
+                >
+                  <button
+                    id="backButtonToEmail"
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="backButtonFooterModal('PASSWORD')"
+                    hidden
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              class="Banner_Advertisement"
+              src="images/announcement/LoginBannerRates.jpg"
+              alt="Download Movies for 10 Pesos!"
+            />
+            <img
+              class="Banner_Advertisement"
+              src="images/announcement/Paalala.jpg"
+              alt="Piso Print"
+            />
+            <img
+              class="Banner_Advertisement"
+              src="images/announcement/Movies_Download.jpg"
+              alt="Lejana's Apartment Logo"
+            />
+          </div>
+          <script
+            type="text/javascript"
+            src="js/advertisement-login.js"
+          ></script>
+
+          <p id="macaddress" class="texthide">448A5B708A9C</p>
+          <p id="hostdomain" class="texthide">$(hostname)</p>
+
+          $(if trial == 'yes')
+          <div class="text-center p-t-0">
+            <a
+              class="txt1"
+              href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)"
+            >
+              Free Trial Available (for 10 Minutes)
+            </a>
+          </div>
+          $(endif)
+        </div>
+      </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+
+    <script>
+      $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+      });
+    </script>
+    <script src="js/modal.js"></script>
+
+    <script>
+      window.intergramId = "1872829117";
+      window.intergramCustomizations = {
+        titleClosed: "CHAT!",
+        titleOpen: "Lejanas Hotspot Chat",
+        introMessage: "Hello! Kung may problema ka chat mo lang ako",
+        autoResponse:
+          "A message that is sent immediately after the user sends its first message",
+        autoNoResponse:
+          "Mukang hindi online si Justine. Mag chat ka nalang ulit mamaya.",
+        mainColor: "#34e0de", // Can be any css supported color 'red', 'rgb(255,87,34)', etc
+        alwaysUseFloatingButton: true, // Use the mobile floating button also on large screens
+      };
+    </script>
+    <script
+      id="intergram"
+      type="text/javascript"
+      src="https://www.intergram.xyz/js/widget.js"
+    ></script>
+
+    <!--===============================================================================================-->
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="js/getVoucherHistory.js"></script>
+    <script src="js/internetSpeedTest.js"></script>
+    <script src="js/feature-VIP/VIPLoginPage.js"></script>
+    <script src="js/feature-VIP/VIPDashboard.js"></script>
+    <script src="js/helper/ErrorCodeConversion.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+  </body>
+</html>

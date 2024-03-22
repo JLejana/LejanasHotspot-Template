@@ -1,0 +1,71 @@
+.VIPLogin-container {
+  width: 100%;
+  min-height: 200px;
+  text-align: center;
+}
+
+.VIPLogin-Label {
+  font-family: Poppins-Medium;
+  font-size: 26px;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.VIPLogin-Label-error {
+  font-family: Poppins-Medium;
+  font-size: 15px;
+  color: #ff5e5e;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.VIPLogin-Input {
+  display: inline-block;
+  width: 70%;
+}
+
+.VIPLogin-Button-Container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: end;
+  padding: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.VIPLogin-Button {
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.2;
+
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  width: 45%;
+  height: 50px;
+  border-radius: 25px;
+
+  background: white;
+  position: relative;
+  z-index: 1;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.VIPLogin-Button:hover {
+  color: rgb(16, 107, 28);
+  background: -webkit-linear-gradient(bottom, #75ffb3, #3cef24);
+}

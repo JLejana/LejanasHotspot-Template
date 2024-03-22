@@ -1,0 +1,114 @@
+.VIPDashboard-container {
+  max-width: 800px;
+  margin: 20px auto;
+}
+.VIPDashboard-user-info {
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.VIPDashboard-user-info div {
+  flex: 1;
+}
+.VIPDashboard-user-info-details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.VIPDashboard-user-info-token {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.VIPDashboard-user-info img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%; /* Make it circular */
+  align-items: center;
+}
+
+.VIPDashboard-user-info-token img {
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  border-radius: 50%; /* Make it circular */
+  margin-right: 8px;
+}
+
+.VIPDashboard-user-dp-token {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.VIPDashboard-table {
+  display: flex;
+  justify-content: space-around;
+  max-width: 800px;
+}
+
+.VIPDashboard-list-button-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.VIPDashboard-list-button-options button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: -webkit-linear-gradient(top, #cafff2, #ffffff);
+  background: linear-gradient(top, #265073, #2d9596);
+  text-decoration: none;
+  border-radius: 80px;
+  border: none;
+}
+
+.VIPDashboard-button-like-link-active {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2d9596;
+  color: #ffffff !important;
+  text-decoration: none;
+  border-radius: 80px;
+  border: none;
+  cursor: pointer;
+}
+
+.VIPDashboard-button-like-link-active img {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  border-radius: 50%; /* Make it circular */
+  margin-right: 5px;
+  align-items: center;
+}
+
+.VIPDashboard-userInfo-Status {
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: grey;
+  border-radius: 50px;
+  color: white;
+}
+
+@media only screen and (max-width: 450px) {
+  .VIPDashboard-user-info {
+    padding: 10px;
+  }
+  .VIPDashboard-user-info-details {
+    display: block;
+    justify-content: flex-start;
+  }
+  .VIPDashboard-user-info img {
+    margin-bottom: 8px;
+  }
+  .VIPDashboard-user-info-token img {
+    margin-bottom: 0px;
+  }
+  .VIPDashboard-userInfo-Status {
+    font-size: x-small;
+  }
+}
