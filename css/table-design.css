@@ -53,7 +53,7 @@
 }
 
 .button-like-link-active {
-  display: inline-block;
+  display: inline-grid;
   padding: 10px 20px;
   background-color: #2d9596;
   color: #fff;

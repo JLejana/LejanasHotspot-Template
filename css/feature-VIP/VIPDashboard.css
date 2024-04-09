@@ -68,7 +68,7 @@
 }
 
 .VIPDashboard-button-like-link-active {
-  display: inline-block;
+  display: inline-grid;
   padding: 10px 20px;
   background-color: #2d9596;
   color: #ffffff !important;
@@ -76,6 +76,19 @@
   border-radius: 80px;
   border: none;
   cursor: pointer;
+  min-width: 105px;
+}
+
+.VIPDashboard-button-like-link-notActive {
+  display: inline-grid;
+  padding: 10px 20px;
+  background-color: #962d2d;
+  color: #ffffff !important;
+  text-decoration: none;
+  border-radius: 80px;
+  border: none;
+  cursor: no-drop !important;
+  min-width: 105px;
 }
 
 .VIPDashboard-button-like-link-active img {
@@ -94,6 +107,24 @@
   color: white;
 }
 
+.ButtonProgressLabel {
+  font-size: xx-small;
+  color: white;
+}
+
+.Dashboard_LoadingAnimationWithPercentage_Table {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.Dashboard_LoadingAnimation_PercentageLabel_Table {
+  font-size: large;
+  color: white;
+  margin-left: 5px;
+}
+
 @media only screen and (max-width: 450px) {
   .VIPDashboard-user-info {
     padding: 10px;
@@ -110,5 +141,9 @@
   }
   .VIPDashboard-userInfo-Status {
     font-size: x-small;
+  }
+
+  .VIPDashboard-table {
+    justify-content: center;
   }
 }

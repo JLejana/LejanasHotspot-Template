@@ -193,7 +193,7 @@
               <button
                 class="login100-form-btn-new"
                 data-toggle="modal"
-                data-target="#modalvip"
+                data-target="#signInModalId"
                 onclick="generateDOMOnModalVIP()"
               >
                 VIP
@@ -317,7 +317,12 @@
           </div>
 
           <!-- Modal For Where To Buy-->
-          <div class="modal fade" id="modalvip" tabindex="-1" role="dialog">
+          <div
+            class="modal fade"
+            id="signInModalId"
+            tabindex="-1"
+            role="dialog"
+          >
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -329,6 +334,7 @@
                     SIGN IN
                   </h5>
                   <button
+                    id="modal-closeButton"
                     type="button"
                     class="close"
                     data-dismiss="modal"
@@ -356,6 +362,7 @@
                     Back
                   </button>
                   <button
+                    id="modal-closeButton"
                     type="button"
                     class="btn btn-secondary"
                     data-dismiss="modal"
@@ -443,6 +450,9 @@
     <script src="js/feature-VIP/VIPLoginPage.js"></script>
     <script src="js/feature-VIP/VIPDashboard.js"></script>
     <script src="js/helper/ErrorCodeConversion.js"></script>
+    <script src="js/APICall/generateVoucher.js"></script>
+    <script src="tools/vanilla-toast-main/vanilla-toast.min.js"></script>
+    <script src="js/APICall/webTaskRunner.js"></script>
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
