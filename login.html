@@ -21,32 +21,18 @@
       type="text/css"
       href="fonts/iconic/css/material-design-iconic-font.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/css-hamburgers/hamburgers.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/animsition/css/animsition.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/select2/select2.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/daterangepicker/daterangepicker.css"
-    />
     <!--===============================================================================================-->
+
     <link rel="stylesheet" type="text/css" href="css/util.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/modal-loading.css" />
     <link rel="stylesheet" type="text/css" href="css/table-design.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="loaderCSSAnimation/planet-loaderAnimation.css"
+    />
     <link
       rel="stylesheet"
       type="text/css"
@@ -57,22 +43,12 @@
       type="text/css"
       href="css/feature-VIP/VIPDashboard.css"
     />
-    <script src="jquery-2.1.4.js"></script>
+    <script src="js/jquery-2.1.4.js"></script>
     <!--===============================================================================================-->
   </head>
   <body>
     <div class="loader-wrapper">
-      <div class="lds-grid">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <div class="planet"></div>
     </div>
 
     $(if chap-id)
@@ -123,7 +99,9 @@
               src="images/logo-LejanaHotspot.png"
               alt="Lejana's Hotspot LOGO"
             />
-            <span class="login100-form-title p-t-27 p-b-18">
+            <span
+              class="login100-form-title p-t-27 p-b-18 animate__animated animate__bounceIn"
+            >
               Please Login to continue
             </span>
 
@@ -174,6 +152,16 @@
           <div class="btn-newfeature">
             <div class="container-login100-form-btn-new">
               <button
+                class="login100-form-btn-new"
+                data-toggle="modal"
+                data-target="#signInModalId"
+                onclick="generateDOMOnModalVIP()"
+              >
+                VIP
+              </button>
+            </div>
+            <div class="container-login100-form-btn-new">
+              <button
                 id="loadsavevoucher"
                 class="login100-form-btn-new"
                 data-toggle="modal"
@@ -188,16 +176,6 @@
               data-target="#modalwheretobuy"
             >
               <button class="login100-form-btn-new">WHERE TO BUY?</button>
-            </div>
-            <div class="container-login100-form-btn-new">
-              <button
-                class="login100-form-btn-new"
-                data-toggle="modal"
-                data-target="#signInModalId"
-                onclick="generateDOMOnModalVIP()"
-              >
-                VIP
-              </button>
             </div>
           </div>
 
@@ -413,11 +391,6 @@
     </div>
     <div id="dropDownSelect1"></div>
 
-    <script>
-      $(window).on("load", function () {
-        $(".loader-wrapper").fadeOut("slow");
-      });
-    </script>
     <script src="js/modal.js"></script>
 
     <script>
@@ -441,33 +414,18 @@
     ></script>
 
     <!--===============================================================================================-->
-    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-database.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="tools/vanilla-toast-main/vanilla-toast.min.js"></script>
     <script src="js/getVoucherHistory.js"></script>
     <script src="js/internetSpeedTest.js"></script>
     <script src="js/feature-VIP/VIPLoginPage.js"></script>
     <script src="js/feature-VIP/VIPDashboard.js"></script>
     <script src="js/helper/ErrorCodeConversion.js"></script>
     <script src="js/APICall/generateVoucher.js"></script>
-    <script src="tools/vanilla-toast-main/vanilla-toast.min.js"></script>
     <script src="js/APICall/webTaskRunner.js"></script>
-    <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
     <script src="vendor/bootstrap/js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
     <script src="js/main.js"></script>
+    <!--===============================================================================================-->
   </body>
 </html>

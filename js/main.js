@@ -1,117 +1,121 @@
 const removeWebTaskRunner = () => {
-    localStorage.removeItem("WebTaskRunnerRunningData");
+  localStorage.removeItem("WebTaskRunnerRunningData");
 
-    const getSignInModalId = document.querySelectorAll("#modal-closeButton")
+  const getSignInModalId = document.querySelectorAll("#modal-closeButton");
 
-    getSignInModalId.forEach(element => {
-        element.addEventListener("click", signInModalClose);
-        function signInModalClose() {
-            localStorage.removeItem("WebTaskRunnerRunningData");
-        }
-    })
+  getSignInModalId.forEach((element) => {
+    element.addEventListener("click", signInModalClose);
+    function signInModalClose() {
+      localStorage.removeItem("WebTaskRunnerRunningData");
+    }
+  });
+};
 
-}
+const windowOnloadActions = () => {
+  // clear Task Runner on LocalStorage
+  removeWebTaskRunner();
 
-const windowOnloadActions = () => { // clear Task Runner on LocalStorage
-    removeWebTaskRunner();
-}
+  //remove/hide loader wrapper
+  $(".loader-wrapper").fadeOut("slow");
+};
 
 if (window.addEventListener) {
-    window.addEventListener("load", windowOnloadActions, false);
+  window.addEventListener("load", windowOnloadActions, false);
 } else if (window.attachEvent) {
-    window.attachEvent("onload", windowOnloadActions);
+  window.attachEvent("onload", windowOnloadActions);
 }
 
-
 (function ($) {
-    "use strict";
-    /*==================================================================
+  "use strict";
+  /*==================================================================
     [ Focus input ]*/
-    $('.input100').each(function () {
-        $(this).on('blur', function () {
-            if ($(this).val().trim() != "") {
-                $(this).addClass('has-val');
-            } else {
-                $(this).removeClass('has-val');
-            }
-        })
-    })
+  $(".input100").each(function () {
+    $(this).on("blur", function () {
+      if ($(this).val().trim() != "") {
+        $(this).addClass("has-val");
+      } else {
+        $(this).removeClass("has-val");
+      }
+    });
+  });
 
-
-    /*==================================================================
+  /*==================================================================
     [ Validate ]*/
-    var input = $('.validate-input .input100');
+  var input = $(".validate-input .input100");
 
-    $('.validate-form').on('submit', function () {
-        var check = true;
+  $(".validate-form").on("submit", function () {
+    var check = true;
 
-        for (var i = 0; i < input.length; i++) {
-            if (validate(input[i]) == false) {
-                showValidate(input[i]);
-                check = false;
-            }
-        }
+    for (var i = 0; i < input.length; i++) {
+      if (validate(input[i]) == false) {
+        showValidate(input[i]);
+        check = false;
+      }
+    }
 
-        return check;
+    return check;
+  });
+
+  $(".validate-form .input100").each(function () {
+    $(this).focus(function () {
+      hideValidate(this);
     });
+  });
 
-
-    $('.validate-form .input100').each(function () {
-        $(this).focus(function () {
-            hideValidate(this);
-        });
-    });
-
-    function validate(input) {
-        if ($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if ($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }
-        } else {
-            if ($(input).val().trim() == '') {
-                return false;
-            }
-        }
+  function validate(input) {
+    if ($(input).attr("type") == "email" || $(input).attr("name") == "email") {
+      if (
+        $(input)
+          .val()
+          .trim()
+          .match(
+            /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/
+          ) == null
+      ) {
+        return false;
+      }
+    } else {
+      if ($(input).val().trim() == "") {
+        return false;
+      }
     }
+  }
 
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
+  function showValidate(input) {
+    var thisAlert = $(input).parent();
 
-        $(thisAlert).addClass('alert-validate');
-    }
+    $(thisAlert).addClass("alert-validate");
+  }
 
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
+  function hideValidate(input) {
+    var thisAlert = $(input).parent();
 
-        $(thisAlert).removeClass('alert-validate');
-    }
+    $(thisAlert).removeClass("alert-validate");
+  }
 
-    /*==================================================================
+  /*==================================================================
     [ Show pass ]*/
-    var showPass = 0;
-    $('.btn-show-pass').on('click', function () {
-        if (showPass == 0) {
-            $(this).next('input').attr('type', 'text');
-            $(this).addClass('active');
-            showPass = 1;
-        } else {
-            $(this).next('input').attr('type', 'password');
-            $(this).removeClass('active');
-            showPass = 0;
-        }
-
-    });
-
-
+  var showPass = 0;
+  $(".btn-show-pass").on("click", function () {
+    if (showPass == 0) {
+      $(this).next("input").attr("type", "text");
+      $(this).addClass("active");
+      showPass = 1;
+    } else {
+      $(this).next("input").attr("type", "password");
+      $(this).removeClass("active");
+      showPass = 0;
+    }
+  });
 })(jQuery);
 
 // ---------------Remove Password Text Box----------------------------------
-var username = document.login.username
+var username = document.login.username;
 var password = document.login.password;
 
 function setpass() {
-    var user = username.value
-    password.value = user;
+  var user = username.value;
+  password.value = user;
 }
 
 username.onkeyup = setpass;
@@ -123,10 +127,10 @@ password.value = username.value;
 // --------------Modal Event When Close Remove Data Table--------------
 
 $("#modalsavevoucher").on("hidden.bs.modal", function () {
-    var table = document.getElementById("tablelist");
-    var tbodyRowCount = table.tBodies[0].rows.length;
-    console.log(tbodyRowCount);
-    for (let i = tbodyRowCount; tbodyRowCount >= 1; tbodyRowCount--) {
-        document.getElementById("tablelist").deleteRow(tbodyRowCount);
-    }
+  var table = document.getElementById("tablelist");
+  var tbodyRowCount = table.tBodies[0].rows.length;
+  console.log(tbodyRowCount);
+  for (let i = tbodyRowCount; tbodyRowCount >= 1; tbodyRowCount--) {
+    document.getElementById("tablelist").deleteRow(tbodyRowCount);
+  }
 });
