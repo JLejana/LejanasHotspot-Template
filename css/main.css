@@ -311,7 +311,7 @@ iframe {
 }
 .login100-form-error {
   font-family: Poppins-Medium;
-  font-size: 18px;
+  font-size: medium;
   color: #ff9641;
   line-height: 1.2;
   text-align: center;

@@ -150,8 +150,8 @@ const showErrorConnection = (isShown) => {
 
 const fetchData = (getStatus) => {
   const bodyData = {
-    mac_address: "11:22:33:44:55:22",
-    userSerialNum: "cc220dfe5dc7test",
+    mac_address: mac,
+    userSerialNum: domain,
   };
 
   const options = {

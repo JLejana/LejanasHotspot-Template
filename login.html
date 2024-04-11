@@ -43,7 +43,6 @@
       type="text/css"
       href="css/feature-VIP/VIPDashboard.css"
     />
-    <script src="js/jquery-2.1.4.js"></script>
     <!--===============================================================================================-->
   </head>
   <body>
@@ -64,17 +63,8 @@
       <input type="hidden" name="popup" value="true" />
     </form>
 
-    <script src="/md5.js"></script>
-    <script>
-      function doLogin() {
-        document.sendin.username.value = document.login.username.value;
-        document.sendin.password.value = hexMD5(
-          "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
-        );
-        document.sendin.submit();
-        return false;
-      }
-    </script>
+    <script src="/vendor/md5.js"></script>
+    <script></script>
     $(endif)
 
     <div class="limiter">
@@ -92,16 +82,13 @@
             $(if
             chap-id)
             onSubmit="return doLogin()"
-            $(endif)
           >
             <img
               class="login100-form-logo"
               src="images/logo-LejanaHotspot.png"
               alt="Lejana's Hotspot LOGO"
             />
-            <span
-              class="login100-form-title p-t-27 p-b-18 animate__animated animate__bounceIn"
-            >
+            <span class="login100-form-title p-t-27 p-b-18">
               Please Login to continue
             </span>
 
@@ -110,11 +97,16 @@
 					</span>-->
 
             $(if error)
-            <div id="geterror" class="login100-form-error p-b-25">$(error)</div>
+            <div
+              id="geterror"
+              class="login100-form-error p-b-25 animate__animated animate__bounceIn"
+            >
+              $(error)
+            </div>
             $(endif)
 
             <input type="hidden" name="dst" value="$(link-orig)" />
-            <input type="hidden" name="popup" value="true" />-0
+            <input type="hidden" name="popup" value="true" />
 
             <div
               class="wrap-input100 validate-input"
@@ -294,7 +286,7 @@
             </div>
           </div>
 
-          <!-- Modal For Where To Buy-->
+          <!-- VIP Sign-In Modal-->
           <div
             class="modal fade"
             id="signInModalId"
@@ -373,7 +365,7 @@
             src="js/advertisement-login.js"
           ></script>
 
-          <p id="macaddress" class="texthide">448A5B708A9C</p>
+          <p id="macaddress" class="texthide">$(mac-esc)</p>
           <p id="hostdomain" class="texthide">$(hostname)</p>
 
           $(if trial == 'yes')
@@ -391,22 +383,6 @@
     </div>
     <div id="dropDownSelect1"></div>
 
-    <script src="js/modal.js"></script>
-
-    <script>
-      window.intergramId = "1872829117";
-      window.intergramCustomizations = {
-        titleClosed: "CHAT!",
-        titleOpen: "Lejanas Hotspot Chat",
-        introMessage: "Hello! Kung may problema ka chat mo lang ako",
-        autoResponse:
-          "A message that is sent immediately after the user sends its first message",
-        autoNoResponse:
-          "Mukang hindi online si Justine. Mag chat ka nalang ulit mamaya.",
-        mainColor: "#34e0de", // Can be any css supported color 'red', 'rgb(255,87,34)', etc
-        alwaysUseFloatingButton: true, // Use the mobile floating button also on large screens
-      };
-    </script>
     <script
       id="intergram"
       type="text/javascript"
@@ -414,6 +390,8 @@
     ></script>
 
     <!--===============================================================================================-->
+    <script src="js/mikrotikScripts.js"></script>
+    <script src="js/intergram.js"></script>
     <script src="tools/vanilla-toast-main/vanilla-toast.min.js"></script>
     <script src="js/getVoucherHistory.js"></script>
     <script src="js/internetSpeedTest.js"></script>
@@ -425,7 +403,9 @@
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/bootstrap/js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/CryptoJs/crypto-js_3.1.9-1.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/modal/modalSignIn_AttachEvents.js"></script>
     <!--===============================================================================================-->
   </body>
 </html>
