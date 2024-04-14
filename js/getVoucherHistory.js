@@ -21,8 +21,8 @@ document.getElementById("loadsavevoucher").onclick = function SelectAllData() {
 
 function AddItemsToTable(user) {
   let username = user.username;
-  let statDate = formatDate(user.end_date);
-  let isExpired = user.isexpired;
+  let statDate = formatDate(user.expiration._seconds);
+  let isExpired = user.isExpired;
 
   var tbody = document.getElementById("tbody1");
   var trow = document.createElement("tr");
@@ -71,7 +71,10 @@ function fetchDataWithTimeout(url, timeout, options) {
 
 function formatDate(dateString) {
   // Create a Date object from the given string
-  var date = new Date(dateString);
+  //var date = new Date(dateString);
+  var date = new Date(0); // The 0 there is the key, which sets the date to the epoch
+  date.setUTCSeconds(dateString); // Set the seconds based on the UNIX timestamp
+  date.setUTCHours(date.getUTCHours() + 8);
 
   // Define months array
   var months = [
@@ -149,45 +152,57 @@ const showErrorConnection = (isShown) => {
 };
 
 const fetchData = (getStatus) => {
-  const bodyData = {
-    mac_address: mac,
-    userSerialNum: domain,
-  };
+  fetch("../../data.json")
+    .then((response) => response.json())
+    .then(async (data) => {
+      const getSerialNumberFromConfig = data.serialNumber;
+      const getAPIEndpoint = data.api_endPoint;
 
-  const options = {
-    method: "POST",
-    body: JSON.stringify(bodyData),
-  };
+      const bodyData = {
+        mac_address: "CD:EC:E9:8E:FA:B6",
+      };
 
-  fetchDataWithTimeout(
-    "https://mikrotik-hotspot-api.vercel.app/api/getHistory",
-    5000,
-    options
-  )
-    .then((response) => {
-      if (!response.ok) {
-        showErrorConnection(true);
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (!getStatus) {
-        data.sort((a, b) => {
-          if (a.isexpired === b.isexpired) {
-            return new Date(a.end_date) - new Date(b.end_date);
-          } else {
-            return a.isexpired ? 1 : -1;
+      const options = {
+        method: "POST",
+        body: JSON.stringify(bodyData),
+      };
+
+      fetchDataWithTimeout(
+        getAPIEndpoint +
+          getSerialNumberFromConfig +
+          "/historyVouchers/getHistory",
+        5000,
+        options
+      )
+        .then((response) => {
+          if (!response.ok) {
+            showErrorConnection(true);
+            throw new Error("Network response was not ok");
           }
+          return response.json();
+        })
+        .then((data) => {
+          if (!getStatus) {
+            data.sort((a, b) => {
+              if (a.isexpired === b.isexpired) {
+                return new Date(a.end_date) - new Date(b.end_date);
+              } else {
+                return a.isexpired ? 1 : -1;
+              }
+            });
+            data.forEach((user) => {
+              AddItemsToTable(user);
+            });
+            document.getElementById("modal-loader").style.display = "none";
+            document.getElementById("tablelist").style.visibility = "visible";
+          }
+        })
+        .catch((error) => {
+          showErrorConnection(true);
+          console.error("Error fetching data:", error);
         });
-        data.forEach((user) => {
-          AddItemsToTable(user);
-        });
-        document.getElementById("modal-loader").style.display = "none";
-        document.getElementById("tablelist").style.visibility = "visible";
-      }
     })
     .catch((error) => {
-      console.error("Error fetching data:", error);
+      console.error("CONFIGURATION IS MISSING : ", error);
     });
 };

@@ -322,7 +322,11 @@ const dynamicallyGenerateHTMLForLogin = () => {
       // error label
       const errorLabel = document.createElement("div");
       errorLabel.id = "VIPLogin-Label-error-id";
-      errorLabel.classList.add("VIPLogin-Label-error");
+      errorLabel.classList.add(
+        "VIPLogin-Label-error",
+        "animate__animated",
+        "animate__bounceIn"
+      );
 
       container.append(errorLabel);
 

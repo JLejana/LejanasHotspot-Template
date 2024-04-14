@@ -161,7 +161,7 @@ const isButtonLoadingDashboard = async (voucherId, isLoading, Label) => {
   function generateButtonProgressLabel() {
     const newParagraph = document.createElement("p");
     newParagraph.id = voucherId + "_statusLabel";
-    newParagraph.innerText = "Connecting...";
+    newParagraph.innerText = "Generating...";
     newParagraph.classList.add("ButtonProgressLabel");
     return newParagraph;
   }
